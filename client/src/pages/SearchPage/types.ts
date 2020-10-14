@@ -1,0 +1,8 @@
+export type Quote = {
+    _id: string;
+    quoteText: string;
+    quoteAuthor: string;
+    quoteGenre?: string;
+}
+
+export type Quotes = Array<Quote>;
