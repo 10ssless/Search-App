@@ -7,7 +7,7 @@ const generateInitialState = () => {
             loading: "idle",
             data: [],
             error: createNewAppError()
-        }
+        },
     }
     return initialState;
 }

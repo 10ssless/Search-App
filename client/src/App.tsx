@@ -1,5 +1,4 @@
 import React, { useMemo } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles"

@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme: Theme) =>
         title: {
             paddingLeft: theme.spacing(2),
             paddingRight: theme.spacing(2),
-        }
+        },
     })
 );
 

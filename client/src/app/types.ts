@@ -10,7 +10,7 @@ export type AppError = {
 export type ApplicationState = {
     quotes: {
         loading: Loading;
-        data: Quotes; // TODO: replace when data from API is known
-        error: AppError
-    }
-}
+        data: Quotes;
+        error: AppError;
+    };
+};

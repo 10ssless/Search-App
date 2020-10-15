@@ -1,12 +1,5 @@
 import {
-    Card,
-    CardContent,
-    CssBaseline,
-    Container,
     Grid,
-    List,
-    ListItem,
-    ListItemText,
     TextField,
     Typography,
     useTheme,
@@ -17,10 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
     getAllQuotesAction,
     selectAllQuotesData,
-    selectAllQuotesError,
-    selectAllQuotesLoading
 } from "./searchPageSlice";
-import { Quote } from "./types";
 import useStyles from "./searchPageStyles";
 import FilteredList from "components/search/FilteredList/FilteredList";
 import { currentColorFromTheme } from "app/helpers";
@@ -33,7 +23,6 @@ const SearchPage = () => {
     const [filterText, setFilterText] = useState("")
 
     const quotesData = useSelector(selectAllQuotesData);
-    const quotesError = useSelector(selectAllQuotesError);
 
     useEffect(() => {
         const allQuotesPromise = dispatch(getAllQuotesAction());

@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { handleError, handleSuccess } from "api/apiUtils";
 
 import { ApplicationState } from "app/types";
-import { getAllQuotes, getAllGenres } from "api/searchApi";
+import { getAllQuotes } from "api/searchApi";
 import initialState from "app/intialState";
 import { checkForActionError, createNewAppError } from "app/helpers";
 
@@ -17,18 +17,6 @@ export const getAllQuotesAction = createAsyncThunk(
         }
     }
 )
-
-// export const getAllGenresAction = createAsyncThunk(
-//     "quotes/retrieveAllGenres",
-//     async (_, { rejectWithValue, signal }) => {
-//         try {
-//             const response = await getAllGenres(signal);
-//             return handleSuccess(response)
-//         } catch (error) {
-//             return handleError(error, rejectWithValue)
-//         }
-//     }
-// )
 
 export const searchSlice = createSlice({
     name: "quotes",
@@ -51,7 +39,6 @@ export const searchSlice = createSlice({
                 state.error = actionError
             }
         })
-
     }
 })
 

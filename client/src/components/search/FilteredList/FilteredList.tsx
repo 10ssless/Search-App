@@ -1,8 +1,6 @@
 import React, { FC } from "react"
 import {
     Box,
-    Card,
-    CardContent,
     Divider,
     List,
     ListItem,
@@ -63,10 +61,7 @@ const FilteredList: FC<FilteredListProps> = ({ filter, quotes, selected, handleS
                                         button
                                         onClick={(e) => handleSelect(e, _id)}
                                     >
-                                        <ListItemText
-                                            // primary={quoteAuthor || "Unknown"} 
-                                            secondary={quoteText}
-                                        />
+                                        <ListItemText secondary={quoteText} />
                                     </ListItem>
                                     <Divider />
                                 </>

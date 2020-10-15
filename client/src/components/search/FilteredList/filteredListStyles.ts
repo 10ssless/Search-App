@@ -10,10 +10,9 @@ const useStyles = makeStyles((theme: Theme) =>
             padding: theme.spacing(2),
         },
         selected: {
-            paddingTop: theme.spacing(2),
-            paddingBottom: theme.spacing(2),
+            paddingTop: theme.spacing(3),
+            paddingBottom: theme.spacing(3),
         }
-
     })
 );
 
