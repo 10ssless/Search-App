@@ -12,8 +12,8 @@ router.get("/quotes", (req, res, next) => {
     axios.get("http://quote-garden.herokuapp.com/api/v2/quotes",{
         params: { limit }
     })
-    .then(response => res.json(response.data))
-    .catch(err => res.send(err));
+    .then(response => res.status(200).json(response.data))
+    .catch(err => res.status(500).send(err));
 });
 
 module.exports = router;

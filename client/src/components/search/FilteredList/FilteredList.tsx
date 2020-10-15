@@ -5,7 +5,7 @@ import {
     Typography,
 } from "@material-ui/core";
 import { FilteredListProps } from "./types"
-import { Quote } from "pages/SearchPage/types";
+import { Quote, Quotes } from "pages/SearchPage/types";
 import _ from "lodash";
 import useStyles from "./filteredListStyles";
 import { useSelector } from "react-redux";
@@ -15,7 +15,9 @@ import FilteredListItem from "../FilteredListItem/FilteredListItem";
 
 const FilteredList: FC<FilteredListProps> = ({ filter, quotes, copied, selected, handleSelect, handleCopy }) => {
     const classes = useStyles()
-    const filteredQuotes = quotes.filter(quote => quote.quoteText.toLowerCase().includes(filter.toLowerCase()))
+    const filteredQuotes = quotes
+        .reduce((uniqueQuotes, thisQuote) => uniqueQuotes.find(item => item.quoteText === thisQuote.quoteText) ? uniqueQuotes : [...uniqueQuotes, thisQuote], [] as Quotes)
+        .filter(quote => quote.quoteText.toLowerCase().includes(filter.toLowerCase()))
     const loading = useSelector(selectAllQuotesLoading);
 
     switch (loading) {
@@ -58,7 +60,7 @@ const FilteredList: FC<FilteredListProps> = ({ filter, quotes, copied, selected,
             return (
                 <Box className={classes.noResults}>
                     <Typography color="textSecondary">
-                        An error occured retrieving quotes.
+                        An error occured retrieving quotes. Please try again later.
                     </Typography>
                 </Box>
             )
