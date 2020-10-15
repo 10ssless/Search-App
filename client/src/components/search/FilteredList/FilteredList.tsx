@@ -15,7 +15,7 @@ import FilteredListItem from "../FilteredListItem/FilteredListItem";
 
 const FilteredList: FC<FilteredListProps> = ({ filter, quotes, copied, selected, handleSelect, handleCopy }) => {
     const classes = useStyles()
-    const filteredQuotes = quotes.filter(quote => quote.quoteText.includes(filter))
+    const filteredQuotes = quotes.filter(quote => quote.quoteText.toLowerCase().includes(filter.toLowerCase()))
     const loading = useSelector(selectAllQuotesLoading);
 
     switch (loading) {

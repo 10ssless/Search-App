@@ -1,0 +1,21 @@
+{
+  "name": "search-app-api",
+  "version": "1.0.0",
+  "description": "Find the Perfect Quote.",
+  "main": "server.js",
+  "repository": "https://github.com/10ssless/Search-App.git",
+  "author": "Zubin Mulji",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "concurrently": "^5.3.0",
+    "nodemon": "^2.0.5"
+  },
+  "scripts": {
+    "start": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "client": "cd client && npm run start"
+  }
+}

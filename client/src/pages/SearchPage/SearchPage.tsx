@@ -7,10 +7,7 @@ import {
 import { AppDispatch } from "app/store";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-    getAllQuotesAction,
-    selectAllQuotesData,
-} from "./searchPageSlice";
+import { getAllQuotesAction, selectAllQuotesData } from "./searchPageSlice";
 import useStyles from "./searchPageStyles";
 import FilteredList from "components/search/FilteredList/FilteredList";
 import { currentColorFromTheme } from "app/helpers";

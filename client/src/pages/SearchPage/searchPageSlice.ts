@@ -30,7 +30,7 @@ export const searchSlice = createSlice({
         });
         builder.addCase(getAllQuotesAction.fulfilled, (state, action) => {
             state.loading = "succeeded";
-            state.data = action.payload.quotes; // TODO: double check response structure
+            state.data = action.payload.quotes;
         });
         builder.addCase(getAllQuotesAction.rejected, (state, action) => {
             state.loading = "failed";
