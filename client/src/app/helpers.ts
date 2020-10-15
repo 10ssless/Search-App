@@ -19,3 +19,7 @@ export const checkForActionError = (action: AppError | any) => {
         }
     }
 }
+
+export const currentColorFromTheme = (themeType: "light" | "dark") => {
+    return themeType === "light" ? "primary" : "secondary";
+}

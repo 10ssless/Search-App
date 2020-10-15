@@ -10,7 +10,7 @@ export const getAllQuotes = (signal: AbortSignal) => {
 
     return search_api.get(ALL_QUOTES_URL, {
         params: {
-            limit: 100
+            limit: 300
         },
         cancelToken: source.token,
     })

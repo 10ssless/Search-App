@@ -1,17 +1,24 @@
 import { Theme, createStyles, makeStyles } from "@material-ui/core/styles";
+import { currentColorFromTheme } from "app/helpers";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
-        root: {
-            display: "flex"
+        card: {
+            marginLeft: theme.spacing(2),
+            marginRight: theme.spacing(2),
         },
-        content: {
-            flexGrow: 1,
-            overflow: "auto",
+        inputFont: {
+            fontSize: 30,
+            color: theme.palette[currentColorFromTheme(theme.palette.type)].main,
         },
-        container: {
-            paddingTop: theme.spacing(4),
-            paddingBottom: theme.spacing(4)
+        searchBar: {
+            paddingLeft: theme.spacing(2),
+            paddingRight: theme.spacing(2),
+            marginBottom: theme.spacing(2),
+        },
+        title: {
+            paddingLeft: theme.spacing(2),
+            paddingRight: theme.spacing(2),
         }
     })
 );
