@@ -21,6 +21,7 @@ const SearchPage = () => {
     const theme = useTheme()
     const [selected, setSelected] = useState("")
     const [filterText, setFilterText] = useState("")
+    const [copied, setCopied] = useState("")
 
     const quotesData = useSelector(selectAllQuotesData);
 
@@ -39,11 +40,16 @@ const SearchPage = () => {
         const { value } = event.target
         setFilterText(value)
         setSelected("")
+        setCopied("")
+    }
+
+    const handleCopy = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>, id: string) => {
+        setCopied(id)
     }
 
     return (
         <>
-            <Grid container xs={12}>
+            <Grid container>
                 <Grid item xs={12} sm={10}>
                     <Typography
                         className={classes.title}
@@ -72,10 +78,12 @@ const SearchPage = () => {
                 </Grid>
                 <Grid item xs={12} sm={10} lg={8}>
                     <FilteredList
+                        copied={copied}
                         filter={filterText}
                         quotes={quotesData}
                         selected={selected}
                         handleSelect={handleSelect}
+                        handleCopy={handleCopy}
                     />
                 </Grid>
             </Grid>

@@ -1,10 +1,7 @@
 import React, { FC } from "react"
 import {
     Box,
-    Divider,
     List,
-    ListItem,
-    ListItemText,
     Typography,
 } from "@material-ui/core";
 import { FilteredListProps } from "./types"
@@ -13,9 +10,10 @@ import _ from "lodash";
 import useStyles from "./filteredListStyles";
 import { useSelector } from "react-redux";
 import { selectAllQuotesLoading } from "pages/SearchPage/searchPageSlice";
+import FilteredListItem from "../FilteredListItem/FilteredListItem";
 
 
-const FilteredList: FC<FilteredListProps> = ({ filter, quotes, selected, handleSelect }) => {
+const FilteredList: FC<FilteredListProps> = ({ filter, quotes, copied, selected, handleSelect, handleCopy }) => {
     const classes = useStyles()
     const filteredQuotes = quotes.filter(quote => quote.quoteText.includes(filter))
     const loading = useSelector(selectAllQuotesLoading);
@@ -35,38 +33,16 @@ const FilteredList: FC<FilteredListProps> = ({ filter, quotes, selected, handleS
                 const sortedQuotes = _.orderBy(filteredQuotes, [(quote: Quote) => quote.quoteText.toLowerCase()], ["asc"])
                 return (
                     <List className={classes.list}>
-                        {sortedQuotes.map((quote: Quote, i) => {
-                            const { _id, quoteAuthor, quoteText } = quote
-                            if (selected === _id) {
-                                return (
-                                    <ListItem
-                                        button
-                                        onClick={(e) => handleSelect(e, _id)}
-                                        selected={selected === _id}
-                                    >
-                                        <Box className={classes.selected}>
-                                            <Typography variant="h5" component="h2">
-                                                {quoteText}
-                                            </Typography>
-                                            <Typography color="textSecondary">
-                                                {quoteAuthor || "Unknown"}
-                                            </Typography>
-                                        </Box>
-                                    </ListItem>
-                                )
-                            }
-                            return (
-                                <>
-                                    <ListItem
-                                        button
-                                        onClick={(e) => handleSelect(e, _id)}
-                                    >
-                                        <ListItemText secondary={quoteText} />
-                                    </ListItem>
-                                    <Divider />
-                                </>
-                            )
-                        })}
+                        {sortedQuotes.map((quote: Quote, i) =>
+                            <FilteredListItem
+                                key={quote._id}
+                                {...quote}
+                                isCopied={copied === quote._id}
+                                isSelected={selected === quote._id}
+                                handleSelect={handleSelect}
+                                handleCopy={handleCopy}
+                            />
+                        )}
                     </List>
                 )
             }

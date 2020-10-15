@@ -1,4 +1,4 @@
-export type Quote = {
+export interface Quote {
     _id: string;
     quoteText: string;
     quoteAuthor: string;
