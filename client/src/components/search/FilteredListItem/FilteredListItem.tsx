@@ -34,15 +34,13 @@ const FilteredListItem: FC<FilteredListItemProps> = ({ _id, quoteText, quoteAuth
                             ~ {author}
                         </Typography>
                     </Grid>
-                    {isSelected ? (
-                        <Grid container justify="flex-end" xs={12} md={2}>
-                            <CopyToClipboard text={formattedQuote}>
-                                <Button color={currentColorFromTheme(theme.palette.type)} onClick={(e) => handleCopy(e, _id)}>
-                                    {isCopied ? "Copied!" : "Copy Quote"}
-                                </Button>
-                            </CopyToClipboard>
-                        </Grid>
-                    ) : null}
+                    <Grid container justify="flex-end" xs={12} md={2}>
+                        <CopyToClipboard text={formattedQuote}>
+                            <Button color={currentColorFromTheme(theme.palette.type)} onClick={(e) => handleCopy(e, _id)}>
+                                {isCopied ? "Copied!" : "Copy Quote"}
+                            </Button>
+                        </CopyToClipboard>
+                    </Grid>
                 </Grid>
             </ListItem>
         )
